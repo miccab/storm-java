@@ -2,6 +2,7 @@ package miccab.storm.exclamation;
 
 import backtype.storm.Config;
 import backtype.storm.LocalCluster;
+import backtype.storm.StormSubmitter;
 import backtype.storm.testing.TestWordSpout;
 import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.utils.Utils;
@@ -21,10 +22,20 @@ public class ExclamationTopology {
         Config conf = new Config();
         conf.setDebug(true);
 
-        LocalCluster cluster = new LocalCluster();
-        cluster.submitTopology("test", conf, builder.createTopology());
-        Utils.sleep(4000);
-        cluster.killTopology("test");
-        cluster.shutdown();
+        if (args != null && args.length > 0) {
+            conf.setNumWorkers(3);
+            try {
+                StormSubmitter.submitTopologyWithProgressBar(args[0], conf, builder.createTopology());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+
+            LocalCluster cluster = new LocalCluster();
+            cluster.submitTopology("test", conf, builder.createTopology());
+            Utils.sleep(4000);
+            cluster.killTopology("test");
+            cluster.shutdown();
+        }
     }
 }

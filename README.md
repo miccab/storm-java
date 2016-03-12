@@ -10,14 +10,14 @@ DONE
   - build a single JAR with the code
   - submit JAR to storm (http://storm.apache.org/documentation/Running-topologies-on-a-production-cluster.html)
   - observe in UI that it works
+- review common patterns http://storm.apache.org/documentation/Common-patterns.html
+- read concepts (http://storm.apache.org/documentation/Concepts.html)
+- read http://storm.apache.org/documentation/Guaranteeing-message-processing.html
+- read http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html
   
 
 TODO:
 
-- review common patterns http://storm.apache.org/documentation/Common-patterns.html
 - use real Spout (e.g. Kafka or JDBC)
 - review exactOnce delivery (trident)
-- read concepts (http://storm.apache.org/documentation/Concepts.html)
-- read http://storm.apache.org/documentation/Guaranteeing-message-processing.html
-- read http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html
 
